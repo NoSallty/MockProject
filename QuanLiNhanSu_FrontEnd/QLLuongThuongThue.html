@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: red;
+        }
+    
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%;
+            opacity: 2;
+        }
+    </style>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Pages / Login - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/db.js"></script>
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/jquery/jquery-3.7.1.js"></script>
+  <script src="assets/js/QLLT.js"></script>
+
+</head>
+
+<body>
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="#" class="logo d-flex align-items-center">
+        <img src="assets/img/logo/fpt-logo.png" alt="">
+        <span class="d-none d-lg-block">FPT Retail</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link1 nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link1 nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-danger badge-number">1</span>
+          </a><!-- End Notification Icon -->
+
+        </li><!-- End Notification Nav -->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link1 nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-chat-left-dots"></i>
+            <span class="badge bg-success badge-number">1</span>
+          </a><!-- End Messages Icon -->
+
+        </li><!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <div class="dropdown btn-getstarted">
+            <!-- <button type="button" class="btn btn-getstarted" data-bs-toggle="dropdown"> -->
+            <img style="height: 45px; width: 45px;" src="assets/img/features-2.jpg" class="rounded-circle m-2"
+              data-bs-toggle="dropdown">
+            <!-- </button> -->
+            <ul class="dropdown-menu border-0"
+              style="box-shadow: 0px 0px 30px color-mix(in srgb, var(--default-color), transparent 85%);">
+              <li class="bg-light py-2 px-4"><a class="dropdown-header" href="#" style="font-size: 20px;">Nguyễn Đức
+                  Chung</a></li>
+              <li class="p-2"><a class="dropdown-item" href="#">
+                  <i class="bi bi-question-circle p-1 me-2"></i>Trợ giúp</a></li>
+              <li class="p-2"><a class="dropdown-item" href="Login.html">
+                  <i class="bi bi-box-arrow-in-right p-1 me-2"></i>Đăng xuất</a></li>
+            </ul>
+          </div>
+
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+  </header>
+  <div class="d-flex bottom">
+    <aside id="sidebar" class="sidebar">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+          <a id="btnTrangChu" class="nav-link collapsed" href="TrangChuAdmin.html">
+            <i class="bi bi-house"></i>
+            <span>Trang chủ</span>
+          </a>
+        </li><!-- End Dashboard Nav -->
+        <li class="nav-item">
+          <a id="btnQLToChuc" class="nav-link collapsed" href="QLToChuc.html">
+            <i class="bi bi-grid-fill"></i>
+            <span>QL tổ chức</span>
+          </a>
+        </li><!-- End Dashboard Nav -->
+        <li class="nav-item">
+          <a id="btnQLChamCong" class="nav-link collapsed" href="QLChamCong.html">
+            <i class="bi bi-calendar-check-fill"></i>
+            <span>QL Chấm công</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a id="btnLuong" class="nav-link" href="QLLuongThuongThue.html">
+            <i class="bi bi-cash-coin"></i>
+            <span>QL Lương - Thưởng - Thuế TNCN</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a id="btnDaoTaoPT" class="nav-link collapsed" href="qllichtruc.html">
+            <i class="bi bi-graph-up-arrow"></i>
+            <span>Quản lý lịch làm việc</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a id="btnCongTT" class="nav-link collapsed" href="QLThongTinNS.html">
+            <i class="bi bi-xbox"></i>
+            <span>Quản lý chi tiết thông tin nhân sự</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+    <div id="content" class="content">
+        <main id="mainLTT" class="main m-3">
+
+            <!-- Start Page Title -->
+            <div class="pagetitle m-3">
+                <h1>Quản lý Lương - Phúc lợi - Hệ số</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="main.html">Trang chủ</a></li>
+                        <li class="breadcrumb-item active">Quản lý Lương - Phúc lợi - Hệ số</li>
+                    </ol>
+                </nav>
+            </div>
+            
+                <div class="m-3">
+                    <div class="">
+                        <!-- Bordered Tabs -->
+                        <ul class="nav nav-tabs nav-tabs-bordered" id="borderedTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#bordered-profile"
+                                    type="button" role="tab" aria-controls="profile" aria-selected="true">Chính sách Lương - Phúc
+                                    lợi
+                                </button>
+                            </li>
+                            <li class="nav-item tabhead" role="presentation">
+                                <button class="nav-link  " id="home-tab" data-bs-toggle="tab" data-bs-target="#bordered-home"
+                                    type="button" role="tab" aria-controls="home" aria-selected="false" onclick="getThucLinh()">Chu kỳ lương</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content pt-4" id="borderedTabContent">
+                            <!-- TAB2 -->
+                            <div class="tab-pane fade " id="bordered-home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="card">
+                                    <div class="container-fluid">
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="card-body  d-flex flex-wrap">
+                                                    <div class="left col-md-12 col-xl-7 pagetitle mt-4">
+                                                        <h3 class="p-3">BẢNG LƯƠNG ĐỊNH KỲ</h3>
+                                                        <div id="chartCol"></div>
+                                                    </div>
+                                                    <div class="right col-md-12 col-xl-5 pagetitle p-4">
+                                                        <h3 class="p-3">TỔNG QUAN</h3>
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <p>Tổng chi phí</p>
+                                                                <p class="text-primary" id="totalCost"></p><br><br>
+            
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <p>Chi phí cả năm</p>
+                                                                <p class="text-primary" id="yearly">đ 162.50B</p><br><br>
+            
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <p>Chi phí tháng gần đây</p>
+                                                                <p class="text-primary" id="monthly">đ 162.50B</p><br><br>
+            
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <p>Tổng thực lĩnh</p>
+                                                                <p class="text-primary" id ="ttl">đ 162.03B</p>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <p>Thực lĩnh cả năm</p>
+                                                                <p class="text-primary" id="ttl-year">đ 162.03B</p>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <p>Thực lĩnh tháng gần đây</p>
+                                                                <p class="text-primary" id = "ttl-monthly">đ 162.03B</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- TAB3 -->
+                            <div class="tab-pane fade show active" id="bordered-profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="row">
+                                    <div class="col-12 d-flex flex-wrap">
+                                        <div style="margin-left: -5px;" class="col-lg-6 col-sm-12 pe-1">
+                                            <div class="card recent-sales overflow-auto">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">CÁC LOẠI LƯƠNG</h5>
+                                                    <button type="button" class="btn btn-outline-primary mb-1"
+                                                        data-bs-toggle="modal" data-bs-target="#addLuong">Tạo mới</button>
+                                                    <table class="table table-borderless datatable list-luong">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">ID</th>
+                                                                <th scope="col">TÊN LOẠI</th>
+                                                                <th scope="col">SỐ TIỀN</th>
+                                                                <th scope="col"></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+            
+                                                        </tbody>
+                                                    </table>
+            
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="margin-left: 5px;" class="col-lg-6 col-sm-12 ps-1">
+                                            <div class="card recent-sales overflow-auto">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">HỆ SỐ LƯƠNG</h5>
+                                                    <!-- <button type="button" class="btn btn-outline-primary mb-1"
+                                                        data-bs-toggle="modal" data-bs-target="#addHSL">Tạo mới</button> -->
+                                                    <table class="table table-borderless list-hsl">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">ID</th>
+                                                                <th scope="col">CHỨC VỤ</th>
+                                                                <th scope="col">HỆ SỐ</th>
+                                                                <th scope="col"></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+            
+                                                        </tbody>
+                                                    </table>
+            
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="card recent-sales overflow-auto">
+                                            <div class="card-body">
+                                                <h5 class="card-title">PHÚC LỢI</h5>
+                                                <button type="button" class="btn btn-outline-primary mb-1" data-bs-toggle="modal"
+                                                    data-bs-target="#themPhucLoi">Tạo mới</button>
+                                                <table class="table table-borderless list-phucLoi">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">ID</th>
+                                                            <th scope="col">TÊN</th>
+                                                            <th scope="col">Nội dung</th>
+                                                            <th scope="col"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+            
+                                                    </tbody>
+                                                </table>
+            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            
+                        </div><!-- End Bordered Tabs -->
+            
+                    </div>
+                </div>
+                <footer id="footer" class="footer">
+                    <div class="credits">
+                        Designed by <strong>EHEHEHE</strong>
+                    </div>
+                </footer><!-- End Footer -->
+            </main>
+            <!-- TAB2 -->
+            <div id="errorPopup1" class="popup">
+                <div class="popup-content" >
+                    <h2>Error</h2>
+                    <p id="errorMessage1" >
+                        <p>Please check again.</p>
+                    </p>
+                    <button onclick="closePopup()">Close</button>
+                </div>
+            </div>
+            <!-- Lương -->
+            <div class="modal fade pt-5" id="addLuong" style="height: 1140px;">
+                <div class="modal-dialog modal-lg" style="margin-top: 150px;">
+                    <div class="modal-content">
+                        <!-- header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Thêm loại lương mới</h4>
+                            <div class="btn-close" data-bs-dismiss="modal"></div>
+                        </div>
+                        <!-- body -->
+                        <form class="form-inline">
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="loai" class="sr-only">Tên loại</label>
+                                <input type="text" class="form-control" id="loai">
+                            </div>
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="sotien" class="sr-only">Số tiền</label>
+                                <input type="text" class="form-control" id="sotien">
+                            </div>
+                        </form>
+                        <!-- footer -->
+                        <div class="modal-footer">
+                            <button onclick="createLuong()" type="button" class="btn btn-success" data-bs-dismiss="modal">
+                                Thêm
+                            </button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                Đóng
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade pt-5" id="suaLuong" style="height: 1140px;">
+                <div class="modal-dialog modal-lg" style="margin-top: 150px;">
+                    <div class="modal-content">
+                        <!-- header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Sửa loại lương</h4>
+                            <div class="btn-close" data-bs-dismiss="modal"></div>
+                        </div>
+                        <!-- body -->
+                        <form class="form-inline">
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="loai1" class="sr-only">Tên loại</label>
+                                <input type="text" class="form-control" id="loai1">
+                            </div>
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="sotien1" class="sr-only">Số tiền</label>
+                                <input type="text" class="form-control" id="sotien1">
+                            </div>
+                        </form>
+                        <!-- footer -->
+                        <div class="modal-footer">
+                            <button onclick="editLuong(luongId)" type="button" class="btn btn-success" data-bs-dismiss="modal">
+                                Sửa
+                            </button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                Đóng
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="xoaLuong" style="height: 1140px;">
+                <div class="modal-dialog modal-md" style="margin-top: 150px;">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Xóa luong</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+            
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            Bạn có chắc chắn muốn xóa?
+                        </div>
+            
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button onclick="deleteLuong(luongId)" type="button" class="btn btn-success" data-bs-dismiss="modal">
+                                Xóa
+                            </button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                Đóng
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- HSL -->
+            <div class="modal fade pt-5" id="addHSL" style="height: 1140px;">
+                <div class="modal-dialog modal-lg" style="margin-top: 150px;">
+                    <div class="modal-content">
+                        <!-- header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Thêm hệ số lương mới</h4>
+                            <div class="btn-close" data-bs-dismiss="modal"></div>
+                        </div>
+                        <!-- body -->
+                        <form class="form-inline">
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="chucvu" class="sr-only">Chức vụ</label>
+                                <input type="text" class="form-control" id="chucvu">
+                            </div>
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="heso" class="sr-only">Hệ số</label>
+                                <input type="text" class="form-control" id="heso">
+                            </div>
+                        </form>
+                        <!-- footer -->
+                        <div class="modal-footer">
+                            <button onclick="createHSL()" type="button" class="btn btn-success" data-bs-dismiss="modal">
+                                Thêm
+                            </button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                Đóng
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="xoaHSL" style="height: 1140px;">
+                <div class="modal-dialog modal-md" style="margin-top: 150px;">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Xóa hệ số lương</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+            
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            Bạn có chắc chắn muốn xóa?
+                        </div>
+            
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button onclick="deleteHSL(hslID)" type="button" class="btn btn-success" data-bs-dismiss="modal">
+                                Xóa
+                            </button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                Đóng
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade pt-5" id="suaHSL" style="height: 1140px;">
+                <div class="modal-dialog modal-lg" style="margin-top: 150px;">
+                    <div class="modal-content">
+                        <!-- header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Sửa hệ số lương</h4>
+                            <div class="btn-close" data-bs-dismiss="modal"></div>
+                        </div>
+                        <!-- body -->
+                        <form class="form-inline">
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="chucvu1" class="sr-only">Chức vụ</label>
+                                <input type="text" class="form-control" id="chucvu1">
+                            </div>
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="heso1" class="sr-only">Hệ số</label>
+                                <input type="text" class="form-control" id="heso1">
+                            </div>
+                        </form>
+                        <!-- footer -->
+                        <div class="modal-footer">
+                            <button onclick="editHSL(hslID)" type="button" class="btn btn-success" data-bs-dismiss="modal">
+                                Sửa
+                            </button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                Đóng
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- modal Tạo Phúc lợi -->
+            <div class="modal fade pt-5" id="themPhucLoi" style="height: 1140px;">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <!-- header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Thêm phúc lợi mới</h4>
+                            <div class="btn-close" data-bs-dismiss="modal"></div>
+                        </div>
+                        <!-- body -->
+                        <form class="form-inline">
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="tenPhucLoi" class="sr-only">Tên phúc lợi</label>
+                                <input type="text" class="form-control" id="tenPhucLoi">
+                            </div>
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="ndPhucLoi" class="sr-only">Nội dung</label>
+                                <input type="text" class="form-control" id="ndPhucLoi">
+                            </div>
+                        </form>
+                        <!-- footer -->
+                        <div class="modal-footer">
+                            <button onclick="addPhucLoi()" type="button" class="btn btn-success" data-bs-dismiss="modal">
+                                Thêm
+                            </button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                Đóng
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end modal Tạo Phúc lợi -->
+            <!-- modal sửa Phúc lợi -->
+            <div class="modal fade pt-5" id="suaPhucLoi" style="height: 1140px;">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <!-- header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Sửa phúc lợi</h4>
+                            <div class="btn-close" data-bs-dismiss="modal"></div>
+                        </div>
+                        <!-- body -->
+                        <form class="form-inline">
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="tenPhucLoi1" class="sr-only">Tên phúc lợi</label>
+                                <input type="text" class="form-control" id="tenPhucLoi1">
+                            </div>
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="ndPhucLoi1" class="sr-only">Nội dung</label>
+                                <input type="text" class="form-control" id="ndPhucLoi1">
+                            </div>
+                        </form>
+                        <!-- footer -->
+                        <div class="modal-footer">
+                            <button onclick="editPhucLoi(itemId_PL)" type="button" class="btn btn-success" data-bs-dismiss="modal">
+                                Cập nhật
+                            </button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                Đóng
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end modal sửa Phúc lợi -->
+            <!-- modal xóa Phúc lợi -->
+            <div class="modal fade" id="xoaPhucLoi" style="height: 1140px;">
+                <div class="modal-dialog modal-dialog-centered modal-md">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Xóa phúc lợi</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+            
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            Bạn có chắc chắn muốn xóa bản ghi này?
+                        </div>
+            
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button onclick="deletePhucLoi(itemId_PL)" type="button" class="btn btn-success"
+                                data-bs-dismiss="modal">
+                                Xóa
+                            </button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                Đóng
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end modal xóa Phúc lợi -->
+      <!-- End #main -->
+      <!-- ======= Footer ======= -->
+      <footer id="footer" class="footer">
+        <div class="credits">Designed by <a href="#">Tam Đa</a></div>
+      </footer>
+    </div>
+  </div>
+  <!-- <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script> -->
+  
+</body>
+
+</html>
